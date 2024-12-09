@@ -14,6 +14,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import ConnectWallet from "./ConnectWallet"
+import {WalletContextProvider} from "./context/WalletContextProvider"
+
 
 const buyerComponents: { title: string; href: string;  }[] = [
     {
@@ -59,6 +61,8 @@ const sellerComponents: { title: string; href: string;}[] = [
 export default function Navbar() {
   return (
     <div className="w-full flex justify-end px-12">
+    <WalletContextProvider>
+
       <NavigationMenu>
         <NavigationMenuList>
         <NavigationMenuItem>
@@ -104,6 +108,8 @@ export default function Navbar() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+    </WalletContextProvider>
+
     </div>
   )
 }
