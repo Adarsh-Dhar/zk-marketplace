@@ -15,46 +15,44 @@ import {
 } from "@/components/ui/navigation-menu"
 import ConnectWallet from "./ConnectWallet"
 
-const buyerComponents: { title: string; href: string; description: string }[] = [
+const buyerComponents: { title: string; href: string;  }[] = [
     {
       title: "Dashboard",
-      href: "/docs/primitives/alert-dialog",
-      description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+      href: "/docs/primitives/alert-dialog",      
     },
     {
-      title: "Marketplace",
-      href: "/docs/primitives/hover-card",
-      description:
-        "For sighted users to preview content available behind a link.",
+      title: "My Rewards",
+      href: "/docs/primitives/hover-card",      
     },
     {
-      title: "History",
-      href: "/docs/primitives/scroll-area",
-      description: "Visually or semantically separates content.",
+      title: "My Products",
+      href: "/docs/primitives/scroll-area",     
+    },
+    {
+        title: "Buy Products",
+        href: "/docs/primitives/scroll-area",     
     },
    
   ]
 
 
-const sellerComponents: { title: string; href: string; description: string }[] = [
+const sellerComponents: { title: string; href: string;}[] = [
     {
       title: "Dashboard",
       href: "/docs/primitives/alert-dialog",
-      description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
     },
     {
       title: "Add Commodities",
       href: "/docs/primitives/hover-card",
-      description:
-        "For sighted users to preview content available behind a link.",
     },
     {
       title: "Sales and Revenue",
       href: "/docs/primitives/scroll-area",
-      description: "Visually or semantically separates content.",
     },
+    {
+        title: "rewards section",
+        href: "/docs/primitives/scroll-area",
+      },
    
   ]
 
@@ -73,7 +71,7 @@ export default function Navbar() {
                     title={component.title}
                     href={component.href}
                   >
-                    {component.description}
+
                   </ListItem>
                 ))}
               </ul>
@@ -89,7 +87,6 @@ export default function Navbar() {
                     title={component.title}
                     href={component.href}
                   >
-                    {component.description}
                   </ListItem>
                 ))}
               </ul>
