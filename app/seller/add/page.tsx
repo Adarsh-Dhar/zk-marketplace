@@ -13,12 +13,41 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { ChevronUp, ChevronDown } from "lucide-react"
+import { useProductStore } from "@/components/zustand"
+import { PostToIpfs } from "@/components/interaction/ipfs"
+import { useWallet } from "@solana/wallet-adapter-react"
+
 
 export default function AddProducts() {
+  const seller = useWallet()
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [amount, setAmount] = useState("")
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(0)
+  const updateTitle = useProductStore((state) => state.updateTitle)
+  const updateDescription = useProductStore((state) => state.updateDescription)
+  const updateAmount = useProductStore((state) => state.updateAmount)
+  const updateQuantity = useProductStore((state) => state.updateQuantity)
+
+  const PostIpfsArgs = {
+    seller : seller.toString(),
+    title : title,
+    description : description,
+    amount : amount,
+    quantity : quantity
+  }
+  if (title != "") {
+    updateTitle(title)
+  }
+  if (description != "") {
+    updateDescription(description)
+  }
+  if (amount != "") {
+    updateAmount(amount)
+  }
+  if (quantity != 0) {
+    updateQuantity(quantity.toString())
+  }
 
   const handleQuantityIncrease = () => {
     setQuantity(prev => prev + 1)
@@ -114,7 +143,11 @@ export default function AddProducts() {
                 </div>
               </div>
               <CardFooter className="flex justify-between p-0 mt-6">
-                <Button type="submit" className="w-full">Add Product</Button>
+                <Button type="submit" className="w-full" onClick={async () => {
+                  const result = await PostToIpfs(PostIpfsArgs)
+                  console.log("result", result)
+
+                }}>Add Product</Button>
               </CardFooter>
             </form>
           </CardContent>
