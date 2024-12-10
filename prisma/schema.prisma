@@ -12,3 +12,8 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Data {
+  id    Int     @default(autoincrement()) @id
+  hash String 
+}
