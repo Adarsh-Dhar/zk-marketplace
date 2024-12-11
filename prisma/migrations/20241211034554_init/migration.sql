@@ -1,7 +1,7 @@
 -- CreateTable
-CREATE TABLE "Data" (
+CREATE TABLE "Hash" (
     "id" SERIAL NOT NULL,
     "hash" TEXT NOT NULL,
 
-    CONSTRAINT "Data_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Hash_pkey" PRIMARY KEY ("id")
 );

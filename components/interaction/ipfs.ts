@@ -9,7 +9,7 @@ interface PostProductProps {
   seller : string
   title : string
   description : string
-  amount : string
+  amount : number
   quantity : number
   
 }
